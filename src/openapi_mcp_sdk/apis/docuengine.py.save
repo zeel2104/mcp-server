@@ -1,3 +1,4 @@
+
 """DocuEngine tools."""
 
 import logging
@@ -80,7 +81,7 @@ class DocuEngineHelper:
                 if isinstance(param_value, str):
                     try:
                         datetime.fromisoformat(param_value.replace("Z", "+00:00"))
-                    except ValueError:
+                    except:
                         return (
                             False,
                             f"Field '{param_name}' must be a valid date (ISO format: YYYY-MM-DD)",
@@ -89,13 +90,13 @@ class DocuEngineHelper:
             elif field_type == "integer" and param_value is not None:
                 try:
                     int(param_value)
-                except ValueError:
+                except:
                     return False, f"Field '{param_name}' must be an integer"
 
             elif field_type == "float" and param_value is not None:
                 try:
                     float(param_value)
-                except ValueError:
+                except:
                     return False, f"Field '{param_name}' must be a number"
 
             # Options validation
